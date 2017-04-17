@@ -1,0 +1,70 @@
+@import './config/variables';
+@import './config/reset';
+@import './utilities/helpers-clases';
+@import './utilities/components';
+body{
+    color:$base-color;
+    background-color: $base-bg;
+    font-family: $base-font;
+}
+
+.full-page{
+    @extend .full-width;
+    min-height: 100vh;
+}
+
+
+.header{
+    background-color: $secondary-color;
+    display: flex;
+    width: 100%;
+    color: $base-bg;
+    height: $header-height;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-body{
+    width: 100%;
+    display: flex;
+}
+.sidebar{
+    display: flex;
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    background-color: $lead-color;
+    color:$base-inverse;
+}
+.sidebar,.content{
+    overflow-y: auto;
+    height: calc(100vh - #{$header-height});
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.content{
+    display: flex;
+    flex: 5;
+    overflow-y: scroll;
+}
+
+
+
+/*SIMPLE GRID */
+.row-3{
+    display: flex;
+    flex: 0 0 100%;
+    flex-flow:row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    .card{
+        flex: 0 0 calc(33.3334% - 30px);
+        margin-left:15px;
+        margin-right:15px;  
+        margin-bottom:30px; 
+    }
+}

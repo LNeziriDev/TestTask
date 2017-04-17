@@ -1,0 +1,308 @@
+/*DROPDOWNS*/
+.drop-down-wrapper{
+    display: flex;
+    position: relative;
+    z-index: $drop-down-index;
+    .drop-down-trigger{
+        display: flex;
+        justify-content: flex-end;
+        a{
+            line-height: 1;
+            display: inline-block;
+            color:inherit;
+        }
+    }
+    .drop-down-content{
+        z-index: $drop-down-index;        
+        @extend .transition;
+        background-color: #fff;
+        @extend .shadow;
+        position: absolute;
+        top: 90%;
+        right: 0;
+        padding: 0 20px;
+        min-width: 140px;
+        border-radius: 2px;
+        height: 0;
+        border:0px solid $border-color;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    &.collapsed{
+        .drop-down-content{
+            padding: 20px;
+            top: 110%;
+            min-height: 20px;
+            height: auto;
+            border-width: 1px;
+            visibility: visible;
+        }
+    }
+}
+
+/*MODAL*/
+.modal{
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $overlay;
+    z-index: 100;
+    @extend .transition;
+    .modal-content{
+        padding: 20px;
+        width: 50%;
+        min-height: 60%;
+        max-height: 90%;
+        overflow-y: auto;
+        background-color: #fff;
+        @extend .shadow;
+        margin: auto;
+        &.right{
+            min-height: 100%;
+            margin-right: 0;
+            max-width: 400px; 
+        }
+    }
+}
+
+/*CARDS*/
+$spacer-card : 40px;
+$card-bg:#fff;
+.card{
+    @extend .shadow;
+    position: static;
+    background-color: $card-bg;
+    display: flex;
+    flex-flow: column wrap;
+    flex: 0 0 100%;
+    //align content horizontaly from start
+    justify-content: flex-start;
+    //alig content verticaly from start 
+    align-content: flex-start;
+    padding:$spacer-card;    
+    border: 1px solid $border-color;
+ 
+    .card-settings{
+        display: flex;
+    }
+    &.with-cover{
+        padding: 0 $spacer-card $spacer-card;
+        
+        .cover{
+            margin-bottom: $spacer-card ;
+        }
+    }
+    
+    .card-content{
+        flex: 5;
+    }
+}
+
+/*CARD SIZE*/
+.card{
+    &.small{
+        padding: $spacer-card / 2;
+        &.with-cover{
+            padding: 0 $spacer-card / 2 $spacer-card / 2;
+            .cover{
+                width: calc(100% + #{$spacer-card / 2 * 2});
+                margin-left: -$spacer-card / 2;
+                margin-right: -$spacer-card / 2;
+                margin-bottom: $spacer-card / 2;
+            }
+        }
+        .avatar{
+            width: 50px;
+            height: 50px;
+            border-width:1px; 
+            img{
+                max-height: 50px;
+            }
+        }
+    }
+}
+
+/*COVER */
+.cover{
+    margin-left: -$spacer-card;
+    margin-right: -$spacer-card;
+    flex: 2;
+    background-size: cover;
+    img{
+        display: flex;
+    }
+}
+/*USER INFO */
+.user-info{
+    display: flex;
+    @extend .full-width;
+    .user-info-wrapper{
+        flex: 1;
+        display: flex;
+    }
+    &.vertical{
+        position: relative;
+        flex-flow: column wrap;
+        justify-content: center;
+        .user-info-wrapper{
+            margin-top:20px;         
+            flex-flow: column wrap;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .card-settings{
+            position: absolute;
+            right: 0;
+            top:0;
+        }
+    }
+     &.horizontal{
+            align-items: center;
+            .user-info-wrapper{
+                margin-top: 0px;
+                margin-left:20px; 
+                flex-flow: column wrap;
+                align-items: flex-start;
+                justify-content: center;
+            }
+        } 
+}
+/*AVATAR*/
+.avatar{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border:7px solid #fff;
+    overflow: hidden;
+    &.small {
+        width: 50px;
+        height: 50px;
+        border-width: 1px;
+        img{
+            max-height: 50px;
+        }
+    }
+}
+.avatar-img{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: inherit;
+    position: relative;
+    img{
+        max-height: 200px;
+        height: auto;
+        width: auto;
+    }
+}
+
+
+
+/*Sections Page */
+
+.section{
+    background-color: $base-bg;
+    display: flex;
+    flex-flow: row wrap;
+    //align content horizontaly from start
+    justify-content: flex-start;
+    //alig content verticaly from start 
+    align-content: flex-start;
+    width: 100%;   
+    height: 100%;
+    .section-wrapper{
+        position: relative;
+        background-color: inherit;
+        display: flex;
+        flex-flow: column wrap;
+        flex: 0 0 100%; 
+        justify-content: flex-start; 
+        align-content: flex-start;
+        padding: 0 $spacer-card $spacer-card; 
+        border: none;
+         .cover{
+            margin-left: -$spacer-card;
+            margin-right: -$spacer-card;
+            width: calc(100% + #{$spacer-card * 2});
+            position: relative;
+            img{
+                width: 100%;
+            }
+            &::after{
+                content: "";
+                width: 100%;
+                height: 100%;
+                display: block;
+                @extend .gradient;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        }
+        >.user-info{
+            transform: translateY(100%);
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 0 40px;
+            color:#fff;
+        }
+        .section-content{
+            padding-top:70px; 
+            display: flex;
+            flex: 5;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: flex-start;
+        }
+    }   
+
+}
+
+
+/*Vertical Menu*/
+.vertical-menu{
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+    width: 100%;
+    li{
+        a{
+            padding: 25px 20px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            color:$base-inverse;
+            span{
+                margin-left: 30px;
+            }
+            &:hover{
+                color: lighten($base-inverse,30%);
+            }
+            &.active{
+                color: lighten($base-inverse,60%);
+            }
+        }
+    }
+}
+
+/*Row with Label something like listeview*/
+.row-with-label{
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0;
+    span:first-child{
+        min-width: 100px;
+        margin-right: 40px;
+    }
+}

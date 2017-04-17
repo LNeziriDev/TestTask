@@ -1,0 +1,60 @@
+@import "../config/variables";
+.head{
+    font-size: $head;
+}
+.lead{
+    font-size: $lead;
+}
+.inverse-color{
+    color: $base-inverse;
+}
+.round{
+    border-radius: 100%;
+}
+.full-width{
+    float: left;
+    width: 100%;
+}
+.row-flex-wrap{
+    display: flex;
+    flex-flow:row wrap;
+}
+.row-flex-nowrap{
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+.shadow{
+    box-shadow: 0 12px  18px rgba(0, 0, 0, 0.21);
+}
+.small {
+    .shadow{
+        box-shadow: 0 2px  10px rgba(0, 0, 0, 0.21);
+    }
+    .head{
+        font-size: 120%;
+    }
+    .lead{
+        font-size: 100%;
+    }
+}
+
+.transition{
+    transition:all 320ms cubic-bezier(0.29, 0.38, 0, 0.79);
+}
+.gradient{
+background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(199,199,199,0) 22%, rgba(0,0,0,0.81) 100%);
+background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(199,199,199,0) 22%,rgba(0,0,0,0.81) 100%);
+background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(199,199,199,0) 22%,rgba(0,0,0,0.81) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#cf000000',GradientType=0 );
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
